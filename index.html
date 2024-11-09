@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proyectos</title>
+</head>
+<body>
+    <!-- Login Section -->
+    <div id="loginSection">
+        <h2>Iniciar Sesión</h2>
+        <label for="username">Usuario:</label>
+        <input type="text" id="username">
+        
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password">
+        <button onclick="validateLogin()">Iniciar Sesión</button>
+        <p id="loginError" style="color: red;"></p>
+    </div>
+
+    <!-- Main Application Section -->
+    <div id="appSection" style="display:none;">
+        <h2>Bienvenido, <span id="loggedUser"></span></h2>
+
+        <!-- Task Registration Section -->
+        <h3>Registrar Nueva Tarea</h3>
+        <form id="taskForm">
+            <label for="taskId">Código de la Tarea:</label>
+            <input type="text" id="taskId" required><br>
+            <label for="taskTitle">Título de la Tarea:</label>
+            <input type="text" id="taskTitle" required><br>
+            <label for="taskDescription">Descripción:</label>
+            <textarea id="taskDescription" required></textarea><br>
+            <label for="startDate">Fecha de Inicio:</label>
+            <input type="date" id="startDate" required><br>
+            <label for="clientName">Nombre del Cliente:</label>
+            <input type="text" id="clientName" required><br>
+            <label for="projectId">ID del Proyecto:</label>
+            <input type="text" id="projectId" required><br>
+            <label for="comments">Comentarios:</label>
+            <textarea id="comments"></textarea><br>
+            <label for="status">Estatus:</label>
+            <input type="text" id="status" value="Por hacer" disabled><br>
+            <button type="button" onclick="addTask()">Agregar Tarea</button>
+        </form>
+
+        <!-- Task List Section -->
+        <h3>Lista de Tareas</h3>
+        <table id="taskTable">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Cliente</th>
+                    <th>ID Proyecto</th>
+                    <th>Comentarios</th>
+                    <th>Estatus</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- Selected Task Section -->
+        <div id="selectedTaskSection" style="display: none;">
+            <h3>Modificar Tarea Seleccionada</h3>
+            <label for="status">Estatus:</label>
+            <select id="statusSelect">
+                <option value="Por hacer">Por hacer</option>
+                <option value="En progreso">En progreso</option>
+                <option value="Rechazado">Rechazado</option>
+                <option value="Cancelado">Cancelado</option>
+                <option value="Cerrado">Cerrado</option>
+                <option value="En pruebas de calidad">En pruebas de calidad</option>
+                <option value="En validación por el usuario">En validación por el usuario</option>
+                <option value="En proceso de liberación">En proceso de liberación</option>
+            </select><br>
+
+            <label for="newComment">Agregar Comentario:</label>
+            <textarea id="newComment"></textarea><br>
+
+            <button type="button" onclick="updateTask()">Actualizar Tarea</button>
+        </div>
+
+        <!-- Filter Section -->
+        <h3>Filtrar Tareas</h3>
+        <label for="statusFilter">Filtrar por Estatus:</label>
+        <select id="statusFilter" onchange="filterTasks()">
+            <option value="Todos">Todos</option>
+            <option value="Por hacer">Por hacer</option>
+            <option value="En progreso">En progreso</option>
+            <option value="Rechazado">Rechazado</option>
+            <option value="Cancelado">Cancelado</option>
+            <option value="Cerrado">Cerrado</option>
+            <option value="En pruebas de calidad">En pruebas de calidad</option>
+            <option value="En validación por el usuario">En validación por el usuario</option>
+        </select>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
